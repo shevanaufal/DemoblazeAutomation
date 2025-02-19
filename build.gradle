@@ -16,6 +16,7 @@ dependencies {
     testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '7.21.1'
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'com.github.javafaker:javafaker:1.0.2'
 }
 
 test {

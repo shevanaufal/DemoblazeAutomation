@@ -1,5 +1,6 @@
 package uiAutomation.stepDefinitions;
 
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -16,6 +17,9 @@ import uiAutomation.config.environment;
 import java.time.Duration;
 
 public class signUp {
+    String usernameFaker;
+    String passwordFaker;
+
     WebDriver driver = environment.getInstance().getDriver();
     @Given("demoblaze homepage")
     public void demoblaze_homepage(){
@@ -29,18 +33,30 @@ public class signUp {
         driver.findElement(By.xpath("//a[@id='signin2']")).click();
     }
 
-    @And("user input (.*) as username$")
+    @And("user input {string} as username")
     public void user_input_username_as_username(String username) {
         FluentWait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout((Duration.ofSeconds(30)));
-//        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h5[@class='modal-title']"))).getText();
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='sign-username']"))).sendKeys(username);
-//        driver.findElement(By.xpath("//input[@id='sign-username']")).sendKeys(username);
+        if(username.equals("random")){
+            Faker faker = new Faker();
+            usernameFaker = faker.name().username();
+        }else{
+            usernameFaker = username;
+        }
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='sign-username']"))).sendKeys(usernameFaker);
+//        System.out.println("Username Random" + usernameFaker);
     }
 
-    @And("user input (.*) as password$")
+    @And("user input {string} as password")
     public void user_input_password_as_password(String password) {
-        driver.findElement(By.xpath("//input[@id='sign-password']")).sendKeys(password);
+        if(password.equals("random")){
+            Faker faker = new Faker();
+            passwordFaker = faker.internet().password();
+        }else{
+            passwordFaker = password;
+        }
+        driver.findElement(By.xpath("//input[@id='sign-password']")).sendKeys(passwordFaker);
+//        System.out.println("Password Random" + passwordFaker);
     }
 
     @And("user click sign up button")
