@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.shevanr'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.28.1'
+    implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.9.2'
+    implementation group: 'io.cucumber', name: 'cucumber-java', version: '7.21.1'
+    testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '7.21.1'
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnit()
+}
