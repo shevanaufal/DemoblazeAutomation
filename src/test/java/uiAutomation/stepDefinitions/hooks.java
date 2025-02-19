@@ -19,9 +19,11 @@ public class hooks {
 
     @After
     public void after(Scenario scenario){
-        if (scenario.isFailed()) {
-            driver.manage().deleteAllCookies(); // Clear cookies if test fails
+        if (driver != null){
+            if (scenario.isFailed()) {
+                driver.manage().deleteAllCookies(); // Clear cookies if test fails
+            }
+            environment.getInstance().quitDriver();
         }
-        environment.getInstance().quitDriver();
     }
 }
