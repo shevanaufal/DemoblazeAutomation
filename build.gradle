@@ -22,3 +22,15 @@ dependencies {
 test {
     useJUnit()
 }
+
+tasks.register('cucumber', JavaExec) {
+    dependsOn testClasses
+    mainClass = 'io.cucumber.core.cli.Main'
+    classpath = sourceSets.test.runtimeClasspath
+    args = [
+            '--plugin', 'pretty',
+            '--glue', 'uiAutomation/stepDefinitions',  // Change this to your actual step definitions package
+            'src/test/java/uiAutomation/features'  // Path to your feature files
+    ]
+}
+
