@@ -11,6 +11,9 @@ public class hooks {
 
     @Before
     public void before(){
+        if(environment.getInstance().getDriver() == null){
+            environment.getInstance();
+        }
         driver = environment.getInstance().getDriver();
     }
 
