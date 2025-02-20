@@ -12,8 +12,6 @@ public class Environment {
     private Environment(){
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--user-data-dir=" + System.getProperty("user.home") + "/selenium_profile"); // Unique profile directory
-        options.addArguments("--disable-blink-features=AutomationControlled"); // Avoid detection
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         String baseUrl = "https://www.demoblaze.com/";
