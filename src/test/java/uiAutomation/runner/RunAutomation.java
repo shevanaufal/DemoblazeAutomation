@@ -13,8 +13,8 @@ import java.util.concurrent.TimeUnit;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features",
-        glue = "uiAutomation/stepDefinitions",
+        features = "classpath:features",
+        glue = "uiAutomation.stepDefinitions",
         plugin = {"pretty","html:reports/DemoblazeCucumber.html","json:reports/cucumber.json"},
         tags = "@TDD"
 )
