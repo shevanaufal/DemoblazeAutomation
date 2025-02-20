@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -64,7 +65,9 @@ public class SignUp {
     @Then("will show success sign up (.*) as expected message$")
     public void will_show_success_sign_up_expected_message(String expectedMessage) {
         FluentWait<WebDriver> wait = new FluentWait<>(driver)
-                .withTimeout((Duration.ofSeconds(30)));
+                .withTimeout((Duration.ofSeconds(30)))
+                .pollingEvery(Duration.ofMillis(500))
+                .ignoring(NoAlertPresentException.class);
         try {
             Alert alert = wait.until(ExpectedConditions.alertIsPresent());
             String actualMessage = alert.getText();
