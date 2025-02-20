@@ -4,17 +4,17 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.WebDriver;
-import uiAutomation.config.environment;
+import uiAutomation.config.Environment;
 
-public class hooks {
+public class Hooks {
     private WebDriver driver;
 
     @Before
     public void before(){
-        if(environment.getInstance().getDriver() == null){
-            environment.getInstance();
+        if(Environment.getInstance().getDriver() == null){
+            Environment.getInstance();
         }
-        driver = environment.getInstance().getDriver();
+        driver = Environment.getInstance().getDriver();
     }
 
     @After
@@ -23,7 +23,7 @@ public class hooks {
             if (scenario.isFailed()) {
                 driver.manage().deleteAllCookies(); // Clear cookies if test fails
             }
-            environment.getInstance().quitDriver();
+            Environment.getInstance().quitDriver();
         }
     }
 }
