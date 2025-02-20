@@ -16,7 +16,7 @@ on:
 
 permissions:
   contents: write #Add push permission
-g
+
 jobs:
   run-automation-test:
     runs-on: ubuntu-latest
