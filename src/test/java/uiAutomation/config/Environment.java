@@ -12,7 +12,7 @@ public class Environment {
     private Environment(){
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--headless");
+        options.addArguments("--headless");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         String baseUrl = "https://www.demoblaze.com/";
