@@ -28,13 +28,15 @@ public class BasePage {
     protected String getText(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
     }
-    public boolean isDisplayed(By locator) {
-        try {
-            WebElement element = driver.findElement(locator);
-            return element.isDisplayed();
-        } catch (Exception e) {
-            return false;
-        }
+//    public boolean isDisplayed(By locator) {
+//        try {
+//            WebElement element = driver.findElement(locator);
+//            return element.isDisplayed();
+//        } catch (Exception e) {
+//            return false;
+//        }
+    protected boolean isDisplayed(By locator) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).isDisplayed();
     }
 }
 

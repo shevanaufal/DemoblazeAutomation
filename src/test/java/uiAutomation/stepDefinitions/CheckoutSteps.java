@@ -1,8 +1,8 @@
 package uiAutomation.stepDefinitions;
 
 import com.github.javafaker.Faker;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import uiAutomation.config.Environment;
 import uiAutomation.pageObject.CheckoutPage;
@@ -13,12 +13,12 @@ public class CheckoutSteps {
     WebDriver driver = Environment.getInstance().getDriver();
     CheckoutPage checkoutPage = new CheckoutPage(driver);
 
-    @When("user goes to the cart")
+    @And("user goes to the cart")
     public void userGoesToTheCart() {
         checkoutPage.openCartPage();
     }
 
-    @When("user completes checkout with random details")
+    @And("user completes checkout with random details")
     public void userCompletesCheckout() {
         Faker faker = new Faker();
         String name = faker.name().fullName();
