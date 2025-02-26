@@ -1,5 +1,5 @@
 # DemoblazeAutomation
-# This repository contains UI Automation for Website Demoblaze. And also, there is API Automation using dummyIO
+This repository contains UI Automation for Website Demoblaze. And also, there is API Automation using dummyIO
 
 # Spec:
 UI Automation Using: Java, Cucumber, and Selenium
