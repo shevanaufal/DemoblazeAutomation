@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import uiAutomation.config.Environment;
 
 public class Hooks {
+    //Declare Hooks
     private WebDriver driver;
 
     @Before

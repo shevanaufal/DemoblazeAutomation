@@ -20,24 +20,6 @@ import java.util.concurrent.TimeUnit;
 )
 
 public class RunAutomation {
-//    private static WebDriver driver;
-//
-//    @BeforeClass
-//    public static void setUp() {
-//        WebDriverManager.chromedriver().setup();
-//        driver = new ChromeDriver();
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//    }
-//
-//    @AfterClass
-//    public static void tearDown() {
-//        if (driver != null) {
-//            driver.quit();
-//        }
-//    }
-//
-//    public static WebDriver getDriver() {
-//        return driver;
-//    }
+    //This is for running UI Automation
 
 }

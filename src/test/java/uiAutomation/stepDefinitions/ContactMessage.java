@@ -17,6 +17,7 @@ import uiAutomation.pageObject.ContactPage;
 import java.time.Duration;
 
 public class ContactMessage {
+    //Step Definitions for Send Contact Message
     String contactEmailFaker;
     String contactNameFaker;
     String contactMessageFaker;

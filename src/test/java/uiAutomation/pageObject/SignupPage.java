@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class SignupPage extends BasePage {
+    //Sign Up Page to Save Xpath Obejct
 
     private final By demoblazeHomepage = By.xpath("//a[@class='navbar-brand']");
     private final By userClickSignUp = By.xpath("//a[@id='signin2']");

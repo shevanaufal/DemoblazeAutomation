@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class ContactPage extends BasePage {
+    //ContactPage to Save Xpath Object
 
     private final By contactModal = By.xpath("//a[@data-target='#exampleModal']");
     private final By contactEmailField = By.xpath("//input[@id='recipient-email']");

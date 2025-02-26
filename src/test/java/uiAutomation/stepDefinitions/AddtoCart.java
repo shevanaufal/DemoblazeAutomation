@@ -7,6 +7,7 @@ import uiAutomation.config.Environment;
 import uiAutomation.pageObject.AddtoCartPage;
 
 public class AddtoCart {
+    //Step Definitions Add to Cart
     WebDriver driver = Environment.getInstance().getDriver();
     AddtoCartPage addtoCartPage = new AddtoCartPage(driver);
 

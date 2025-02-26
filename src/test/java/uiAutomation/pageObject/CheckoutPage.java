@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class CheckoutPage extends BasePage {
+    //Checkout Page to Save Xpath Object
 
     private final By cartLink = By.id("cartur"); // Cart button
     private final By placeOrderButton = By.xpath("//button[contains(text(),'Place Order')]");

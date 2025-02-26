@@ -33,16 +33,11 @@ dependencies {
 
 test {
 
-    useJUnitPlatform()
+    useJUnit()
 //    useJUnit()
-
     testLogging {
         events "passed", "skipped", "failed"
     }
-//    useTestNG()
-//    testLogging {
-//        events "passed", "skipped", "failed"
-//    }
 }
 
 tasks.register('cucumber', JavaExec) {

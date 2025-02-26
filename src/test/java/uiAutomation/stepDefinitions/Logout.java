@@ -8,6 +8,7 @@ import uiAutomation.config.Environment;
 import uiAutomation.pageObject.LogoutPage;
 
 public class Logout {
+    //Step Definitions for Logout
     WebDriver driver = Environment.getInstance().getDriver();
     LogoutPage logoutPage = new LogoutPage(driver);
 

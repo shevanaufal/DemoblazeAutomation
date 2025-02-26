@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="APITestSuite">
+    <test name="API Tests">
+        <groups>
+            <run>
+                <include name="api"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="apiAutomation.AutomationAPITest"/>
+        </classes>
+    </test>
+</suite>

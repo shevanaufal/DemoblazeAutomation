@@ -10,6 +10,7 @@ import uiAutomation.pageObject.CheckoutPage;
 import static org.junit.Assert.assertTrue;
 
 public class CheckoutSteps {
+    //Step Definitions Checkout
     WebDriver driver = Environment.getInstance().getDriver();
     CheckoutPage checkoutPage = new CheckoutPage(driver);
 

@@ -18,6 +18,7 @@ import uiAutomation.pageObject.SignupPage;
 import java.time.Duration;
 
 public class SignUp {
+    //Step Definitions for Sign Up
     String usernameFaker;
     String passwordFaker;
 

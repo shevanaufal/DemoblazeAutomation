@@ -9,6 +9,7 @@ import uiAutomation.config.Environment;
 import uiAutomation.pageObject.LoginPage;
 
 public class Login {
+    //Step Definitions for Login
     WebDriver driver = Environment.getInstance().getDriver();
     LoginPage loginPage = new LoginPage(driver);
 
