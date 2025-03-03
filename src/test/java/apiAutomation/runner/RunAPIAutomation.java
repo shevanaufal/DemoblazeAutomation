@@ -10,8 +10,8 @@ import org.junit.runner.RunWith;
         glue = "apiAutomation.stepDefinitions",
         plugin = {
                 "pretty",
-                "html:reports/ApiCucumberReport.html",
-                "json:reports/cucumber.json"
+                "html:reports/api/ApiCucumberReport.html",
+                "json:reports/api/cucumberAPI.json"
         },
         tags = "@api"
 )

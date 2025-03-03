@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @CucumberOptions(
         features = "src/test/resources/uiAutomation/features",
         glue = "uiAutomation.stepDefinitions",
-        plugin = {"pretty","html:reports/DemoblazeCucumber.html","json:reports/cucumber.json"},
+        plugin = {"pretty","html:reports/ui/DemoblazeCucumber.html","json:reports/ui/cucumberUI.json"},
         tags = "@web"
 )
 
