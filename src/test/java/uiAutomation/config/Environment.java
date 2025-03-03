@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.time.Duration;
+
 public class Environment {
     private static Environment instance;
     private WebDriver driver;
@@ -13,7 +15,7 @@ public class Environment {
     private Environment(){
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--headless");
+        options.addArguments("--headless");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         String baseUrl = "https://www.demoblaze.com/";

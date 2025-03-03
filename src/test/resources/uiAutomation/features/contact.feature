@@ -1,5 +1,5 @@
 Feature: Send Message via Contact Modal
-  @TDD
+  @web
   Scenario Outline:
     Given demoblaze homepage
     When user click contact

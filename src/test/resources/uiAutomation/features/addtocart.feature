@@ -1,5 +1,5 @@
 Feature: Add to Cart
-  @TDD
+  @web
   Scenario Outline: User can adds an item to the cart
     Given demoblaze homepage
     When user add "<productName>" with ID "<productId>" to the cart

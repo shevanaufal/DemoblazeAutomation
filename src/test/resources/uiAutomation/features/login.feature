@@ -1,5 +1,5 @@
 Feature: Login to Demoblaze
-  @TDD
+  @web
   Scenario Outline: User can login to Demoblaze
     Given demoblaze homepage
     When user click log in

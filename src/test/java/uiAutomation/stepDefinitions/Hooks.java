@@ -22,7 +22,7 @@ public class Hooks {
     public void after(Scenario scenario){
         if (driver != null){
             if (scenario.isFailed()) {
-                driver.manage().deleteAllCookies(); // Clear cookies if test fails
+                driver.manage().deleteAllCookies(); //Clear cookies if test fails
             }
             Environment.getInstance().quitDriver();
         }

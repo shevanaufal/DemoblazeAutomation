@@ -1,5 +1,5 @@
 Feature: Logout from Demoblaze
-  @TDD
+  @web
   Scenario Outline: user can logout from Demoblaze
     Given demoblaze homepage
     When user click log in

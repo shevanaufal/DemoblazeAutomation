@@ -46,9 +46,23 @@ tasks.register('cucumber', JavaExec) {
     classpath = sourceSets.test.runtimeClasspath
     args = [
             '--plugin', 'pretty',
-            '--glue', 'uiAutomation/stepDefinitions',
+            '--glue', 'uiAutomation.stepDefinitions',
             '--tags','@web',
             'src/test/resources/uiAutomation/features'  //Path to feature files
     ]
 }
+
+tasks.register('cucumberApi', JavaExec) {
+    dependsOn testClasses
+    mainClass = 'io.cucumber.core.cli.Main'
+    classpath = sourceSets.test.runtimeClasspath
+    args = [
+            '--plugin', 'pretty',
+            '--glue', 'apiAutomation.stepDefinitions',
+            '--tags','@api',
+            'src/test/resources/apiAutomation/features'  // Path to API feature files
+    ]
+}
+
+
 

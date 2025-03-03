@@ -10,7 +10,6 @@ import java.time.Duration;
 
 public class BasePage {
     //Base Page to Setup Webdriver and Locator
-
     protected WebDriver driver;
     protected WebDriverWait wait;
 
@@ -28,6 +27,8 @@ public class BasePage {
     }
 
     protected String getText(By locator) {
+        // Wait for the element to be present in the DOM
+        wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
     }
 

@@ -39,14 +39,12 @@ public class UserAPI {
                 .post("/user/create");
     }
 
-    public static Response updateUser(String userId, String newFirstName) {
-        JSONObject requestBody = new JSONObject();
-        requestBody.put("firstName", newFirstName);
+    public static Response updateUser(String userId, String firstName, String lastName, String email) {
 
         return RestAssured.given()
-                .header("app-id", Config.APP_ID) //Call Config App ID
-                .header("Content-Type", "application/json")
-                .body(requestBody.toString())
+                .header("app-id", Config.APP_ID)
+                .contentType("application/json")
+                .body("{ \"firstName\": \"" + firstName + "\", \"lastName\": \"" + lastName + "\", \"email\": \"" + email + "\" }")
                 .when()
                 .put("/user/" + userId);
     }

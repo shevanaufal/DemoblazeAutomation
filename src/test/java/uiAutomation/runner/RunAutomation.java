@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
         features = "src/test/resources/uiAutomation/features",
         glue = "uiAutomation.stepDefinitions",
         plugin = {"pretty","html:reports/DemoblazeCucumber.html","json:reports/cucumber.json"},
-        tags = "@TDD"
+        tags = "@web"
 )
 
 public class RunAutomation {

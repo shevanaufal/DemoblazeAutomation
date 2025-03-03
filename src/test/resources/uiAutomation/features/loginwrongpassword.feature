@@ -1,5 +1,6 @@
 Feature: Login to Demoblaze
-  @TDD
+  @web
+    #Negative Case
   Scenario Outline: User cannot login to Demoblaze when the password is invalid
     Given demoblaze homepage
     When user click log in

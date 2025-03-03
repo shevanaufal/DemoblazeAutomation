@@ -2,6 +2,10 @@ package uiAutomation.pageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class CheckoutPage extends BasePage {
     //Checkout Page to Save Xpath Object
@@ -33,10 +37,15 @@ public class CheckoutPage extends BasePage {
         type(creditCardField, card);
         type(monthField, month);
         type(yearField, year);
+
+    }
+
+    public void clickPurchaseButton() {
         click(purchaseButton);
     }
 
     public boolean isOrderSuccessful() {
         return isDisplayed(successMessage);
+//        return wait.until(ExpectedConditions.visibilityOfElementLocated(successMessage)).isDisplayed();
     }
 }
