@@ -9,6 +9,12 @@ repositories {
     mavenCentral()
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+
 dependencies {
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.28.1'
     implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.9.2'
@@ -21,7 +27,7 @@ dependencies {
     // https://mvnrepository.com/artifact/io.rest-assured/rest-assured
     testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '5.5.1'
     // https://mvnrepository.com/artifact/org.testng/testng
-    testImplementation group: 'org.testng', name: 'testng', version: '7.11.0'
+//    testImplementation group: 'org.testng', name: 'testng', version: '7.11.0'
     // https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator
     implementation group: 'io.rest-assured', name: 'json-schema-validator', version: '5.5.1'
     // https://mvnrepository.com/artifact/org.json/json
@@ -34,35 +40,37 @@ dependencies {
 test {
 
     useJUnit()
+    include '**/Run*.class' // To only run runners
+    systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
 //    useJUnit()
     testLogging {
         events "passed", "skipped", "failed"
     }
 }
 
-tasks.register('cucumber', JavaExec) {
-    dependsOn testClasses
-    mainClass = 'io.cucumber.core.cli.Main'
-    classpath = sourceSets.test.runtimeClasspath
-    args = [
-            '--plugin', 'pretty',
-            '--glue', 'uiAutomation.stepDefinitions',
-            '--tags','@web',
-            'src/test/resources/uiAutomation/features'  //Path to feature files
-    ]
-}
+//tasks.register('cucumber', JavaExec) {
+//    dependsOn testClasses
+//    mainClass = 'io.cucumber.core.cli.Main'
+//    classpath = sourceSets.test.runtimeClasspath
+//    args = [
+//            '--plugin', 'pretty',
+//            '--glue', 'uiAutomation.stepDefinitions',
+//            '--tags','@web',
+//            'src/test/resources/uiAutomation/features'  //Path to feature files
+//    ]
+//}
 
-tasks.register('cucumberApi', JavaExec) {
-    dependsOn testClasses
-    mainClass = 'io.cucumber.core.cli.Main'
-    classpath = sourceSets.test.runtimeClasspath
-    args = [
-            '--plugin', 'pretty',
-            '--glue', 'apiAutomation.stepDefinitions',
-            '--tags','@api',
-            'src/test/resources/apiAutomation/features'  // Path to API feature files
-    ]
-}
+//tasks.register('cucumberApi', JavaExec) {
+//    dependsOn testClasses
+//    mainClass = 'io.cucumber.core.cli.Main'
+//    classpath = sourceSets.test.runtimeClasspath
+//    args = [
+//            '--plugin', 'pretty',
+//            '--glue', 'apiAutomation.stepDefinitions',
+//            '--tags','@api',
+//            'src/test/resources/apiAutomation/features'  // Path to API feature files
+//    ]
+//}
 
 
 

@@ -7,6 +7,7 @@ Feature: Logout from Demoblaze
     And user input <passwordlogin> as passwordLogin
     And user click log in button
     Then user can see welcome with username
+#    And user see logout menu
     And user click logout
     Then user successfully logout
 

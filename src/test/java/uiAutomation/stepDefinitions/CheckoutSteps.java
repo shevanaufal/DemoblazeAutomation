@@ -63,4 +63,9 @@ public class CheckoutSteps {
             fail("Order was not successful!");
         }
     }
+
+    @And("user confirm modal success purchase")
+    public void userConfirmModalSuccessPurchase() {
+        checkoutPage.clickConfirmSuccessPurchase();
+    }
 }

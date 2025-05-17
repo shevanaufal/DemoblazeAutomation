@@ -11,6 +11,12 @@ public class Logout {
     //Step Definitions for Logout
     WebDriver driver = Environment.getInstance().getDriver();
     LogoutPage logoutPage = new LogoutPage(driver);
+//
+//    @And("user see logout menu")
+//    public void userSeeLogoutMenu() {
+//        String logoutNameAssert = logoutPage.getTextLogOut();
+//        Assert.assertEquals("Log out",logoutNameAssert);
+//    }
 
     @And("user click logout")
     public void userClickLogout() {

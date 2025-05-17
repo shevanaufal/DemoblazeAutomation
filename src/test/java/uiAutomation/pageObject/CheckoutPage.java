@@ -20,6 +20,7 @@ public class CheckoutPage extends BasePage {
     private final By yearField = By.id("year");
     private final By purchaseButton = By.xpath("//button[contains(text(),'Purchase')]");
     private final By successMessage = By.xpath("//h2[contains(text(),'Thank you for your purchase!')]");
+    private final By confirmSuccessPurchase = By.xpath("//button[contains(text(),'OK')]");
 
     public CheckoutPage(WebDriver driver) {
         super(driver);
@@ -47,5 +48,9 @@ public class CheckoutPage extends BasePage {
     public boolean isOrderSuccessful() {
         return isDisplayed(successMessage);
 //        return wait.until(ExpectedConditions.visibilityOfElementLocated(successMessage)).isDisplayed();
+    }
+
+    public void clickConfirmSuccessPurchase() {
+        click(confirmSuccessPurchase);
     }
 }
