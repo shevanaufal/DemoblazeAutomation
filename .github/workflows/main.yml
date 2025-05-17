@@ -1,9 +1,4 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-# This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-gradle
+#Github Workflows
 
 name: Demoblaze Automation
 
@@ -14,9 +9,11 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 
-jobs:
-  build:
+permissions:
+  contents: write #Add push permission
 
+jobs:
+  run-automation-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -37,8 +34,34 @@ jobs:
     - name: Setup gradlew
       run: chmod +x gradlew
 
-    #execute gradle command for running cucumber test
-    - name: Execute Test
+    #execute UI test
+    - name: Execute UI Tests
       run: ./gradlew cucumber
 
-          
+    #execute API test
+    - name: Execute API Tests
+      run: ./gradlew cucumberApi
+
+    #archive test result for ui automation
+    - name: Archive UI Cucumber Report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: UI Cucumber Report
+        path: reports/ui/
+
+    #archive test result for api automation
+    - name: Archive API Cucumber Report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: API Cucumber Report
+        path: reports/api/
+
+    #deploy to github pages
+    - name: GitHub Pages action
+      if: always()
+      uses: peaceiris/actions-gh-pages@v4.0.0
+      with:
+        PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PUBLISH_DIR: reports

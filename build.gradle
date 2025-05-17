@@ -17,10 +17,27 @@ dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation 'com.github.javafaker:javafaker:1.0.2'
+
+    // https://mvnrepository.com/artifact/io.rest-assured/rest-assured
+    testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '5.5.1'
+    // https://mvnrepository.com/artifact/org.testng/testng
+    testImplementation group: 'org.testng', name: 'testng', version: '7.11.0'
+    // https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator
+    implementation group: 'io.rest-assured', name: 'json-schema-validator', version: '5.5.1'
+    // https://mvnrepository.com/artifact/org.json/json
+    implementation group: 'org.json', name: 'json', version: '20250107'
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-testng
+//    implementation group: 'io.cucumber', name: 'cucumber-testng', version: '7.20.1'
+
 }
 
 test {
+
     useJUnit()
+//    useJUnit()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
 
 tasks.register('cucumber', JavaExec) {
@@ -29,8 +46,23 @@ tasks.register('cucumber', JavaExec) {
     classpath = sourceSets.test.runtimeClasspath
     args = [
             '--plugin', 'pretty',
-            '--glue', 'uiAutomation/stepDefinitions',  // Change this to your actual step definitions package
-            'src/test/java/uiAutomation/features'  // Path to your feature files
+            '--glue', 'uiAutomation.stepDefinitions',
+            '--tags','@web',
+            'src/test/resources/uiAutomation/features'  //Path to feature files
     ]
 }
+
+tasks.register('cucumberApi', JavaExec) {
+    dependsOn testClasses
+    mainClass = 'io.cucumber.core.cli.Main'
+    classpath = sourceSets.test.runtimeClasspath
+    args = [
+            '--plugin', 'pretty',
+            '--glue', 'apiAutomation.stepDefinitions',
+            '--tags','@api',
+            'src/test/resources/apiAutomation/features'  // Path to API feature files
+    ]
+}
+
+
 

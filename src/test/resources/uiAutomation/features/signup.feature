@@ -1,5 +1,5 @@
 Feature: Sign Up to Demoblaze
-  @TDD
+  @web
   Scenario Outline: User an sign up to Demoblaze
     Given demoblaze homepage
     When user click sign up

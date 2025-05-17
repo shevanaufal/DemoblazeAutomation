@@ -5,21 +5,25 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class environment {
-    private static environment instance;
+import java.time.Duration;
+
+public class Environment {
+    private static Environment instance;
     private WebDriver driver;
 
-    private environment(){
+    //Setup Environment
+    private Environment(){
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         String baseUrl = "https://www.demoblaze.com/";
         driver.get(baseUrl);
     }
-    public static environment getInstance() {
+    public static Environment getInstance() {
         if (instance == null) {
-            instance = new environment();
+            instance = new Environment();
         }
         return instance;
     }
