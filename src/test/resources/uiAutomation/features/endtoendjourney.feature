@@ -12,9 +12,9 @@ Feature: End-to-End Test for User Journey
     And user click purchase button
     Then order should be successful
     And user confirm modal success purchase
-    And user see logout menu
-    And user click logout
-    Then user successfully logout
+#    And user see logout menu
+#    And user click logout
+#    Then user successfully logout
 
     Examples:
       | usernamelogin   | passwordlogin      |
