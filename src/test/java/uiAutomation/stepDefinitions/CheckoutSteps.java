@@ -65,7 +65,8 @@ public class CheckoutSteps {
     }
 
     @And("user confirm modal success purchase")
-    public void userConfirmModalSuccessPurchase() {
+    public void userConfirmModalSuccessPurchase() throws InterruptedException {
+        Thread.sleep(1000); // Tunggu 1 detik ( sampai popup muncul )
         checkoutPage.clickConfirmSuccessPurchase();
     }
 }
