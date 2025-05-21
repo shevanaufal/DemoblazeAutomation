@@ -7,7 +7,7 @@ public class LogoutPage extends BasePage {
     //Logout Page to Save Xpath Object
 
     private final By logoutTextDisplayed = By.xpath("//a[contains(text(),'Log out')]");
-    private final By userClickLogout = By.xpath("//a[@onclick='logOut()']");
+    private final By userClickLogout = By.xpath("//a[@id='logout2']");
     private final By validateLogout = By.xpath("//a[@id='login2']");
 
     public LogoutPage(WebDriver driver) {
