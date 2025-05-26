@@ -15,6 +15,7 @@ Automation Test:
 5. Add to Cart
 6. Checkout
 7. Send Message
+8. End to End Testing
 
 API Automation
 1. Get User
@@ -27,10 +28,10 @@ API Automation
 
 # How to Running Automation
 UI Automation  :
-You can run UI Automation using runner in uiAutomation/runner/RunAutomation package
+You can run UI Automation using runner in uiAutomation/runner/RunAutomation package or running in terminal with ./gradlew cucumber
 
 API Automation :
-You can run API Automation using command line ./gradlew test
+You can run API Automation using runner in apiAutomation/runner/RunAPIAutomation package or running in terminal with ./gradlew cucumberApi
 
 # Additional Notes:
-You can check automation reports after running the code in /reports/DemoblazeCucumber.html
+You can check automation reports after running the code in artifacts from github actions
