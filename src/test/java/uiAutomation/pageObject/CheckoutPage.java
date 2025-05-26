@@ -1,7 +1,6 @@
 package uiAutomation.pageObject;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -20,7 +19,11 @@ public class CheckoutPage extends BasePage {
     private final By yearField = By.id("year");
     private final By purchaseButton = By.xpath("//button[contains(text(),'Purchase')]");
     private final By successMessage = By.xpath("//h2[contains(text(),'Thank you for your purchase!')]");
-    private final By confirmSuccessPurchase = By.xpath("//button[contains(text(),'OK')]");
+    private final By sweetAlertOkButton = By.xpath("//button[contains(@class, 'confirm') and text()='OK']");
+    private final By sweetAlertLocator = By.xpath("//div[contains(@class, 'sweet-alert') and contains(@class, 'visible')]");
+    private final By orderModalLocator = By.id("orderModal");
+    private final By orderModalCloseButton = By.xpath("//div[@id='orderModal']//button[text()='Close']");
+
 
     public CheckoutPage(WebDriver driver) {
         super(driver);
@@ -47,10 +50,33 @@ public class CheckoutPage extends BasePage {
 
     public boolean isOrderSuccessful() {
         return isDisplayed(successMessage);
-//        return wait.until(ExpectedConditions.visibilityOfElementLocated(successMessage)).isDisplayed();
     }
 
-    public void clickConfirmSuccessPurchase() {
-        click(confirmSuccessPurchase);
+    public void clickSweetAlertOk() {
+        click(sweetAlertOkButton);
     }
+
+    public void waitForSweetAlertToDisappear() {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(sweetAlertLocator));
+    }
+
+    public void closeOrderModalIfVisible() {
+        try {
+            WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(3));
+            WebElement closeButton = shortWait.until(ExpectedConditions.elementToBeClickable(orderModalCloseButton));
+            closeButton.click();
+
+            //Wait modal
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(orderModalLocator));
+        } catch (TimeoutException | NoSuchElementException e) {
+            System.out.println("'Place order' modal was not visible or closable.");
+        }
+    }
+
+    public void handlePurchaseConfirmationFlow() {
+        clickSweetAlertOk();
+        waitForSweetAlertToDisappear();
+        closeOrderModalIfVisible();
+    }
+
 }

@@ -12,7 +12,7 @@ public class UpdateUser {
 
     private Response response;
 
-    @When("I update the user’s first name to {string}")
+    @When("I update the user's first name to {string}")
     public void updateUser(String newFirstName) {
         assertNotNull(SharedStorage.createdUserId, "User ID should not be null before updating");
 

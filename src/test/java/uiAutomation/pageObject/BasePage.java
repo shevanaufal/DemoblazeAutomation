@@ -25,13 +25,16 @@ public class BasePage {
     }
 
     protected String getText(By locator) {
-        // Wait for the element to be present in the DOM
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
     }
 
     protected boolean isDisplayed(By locator) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).isDisplayed();
+        try {
+            return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).isDisplayed();
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 }
 

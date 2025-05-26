@@ -3,12 +3,11 @@ package uiAutomation.stepDefinitions;
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import uiAutomation.config.Environment;
 import uiAutomation.pageObject.CheckoutPage;
 
@@ -65,8 +64,13 @@ public class CheckoutSteps {
     }
 
     @And("user confirm modal success purchase")
-    public void userConfirmModalSuccessPurchase() throws InterruptedException {
-        Thread.sleep(1000); // Tunggu 1 detik ( sampai popup muncul )
-        checkoutPage.clickConfirmSuccessPurchase();
+    public void userConfirmModalSuccessPurchase() {
+        try {
+            checkoutPage.handlePurchaseConfirmationFlow();
+        } catch (Exception e) {
+            System.err.println("CRITICAL: Failed during the purchase confirmation flow: " + e.getMessage());
+            fail("Failed to handle purchase confirmation modals: " + e.getMessage());
+        }
     }
+
 }
