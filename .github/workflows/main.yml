@@ -42,6 +42,10 @@ jobs:
     - name: Execute API Tests
       run: ./gradlew cucumberApi
 
+    #check list files
+    - name: List Files After Tests
+      run: ls -R
+
     #archive test result for ui automation
     - name: Archive UI Cucumber Report
       uses: actions/upload-artifact@v4

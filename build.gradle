@@ -54,10 +54,15 @@ tasks.register('cucumber', JavaExec) {
     classpath = sourceSets.test.runtimeClasspath
     args = [
             '--plugin', 'pretty',
+            '--plugin', 'html:reports/ui/UiCucumberReport.html',
+            '--plugin', 'json:reports/ui/cucumberUI.json',
             '--glue', 'uiAutomation.stepDefinitions',
             '--tags','@web',
             'src/test/resources/uiAutomation/features'  //Path to feature files
     ]
+    doFirst {
+        mkdir 'reports/ui'
+    }
 }
 
 tasks.register('cucumberApi', JavaExec) {
@@ -66,10 +71,15 @@ tasks.register('cucumberApi', JavaExec) {
     classpath = sourceSets.test.runtimeClasspath
     args = [
             '--plugin', 'pretty',
+            '--plugin', 'html:reports/api/ApiCucumberReport.html',
+            '--plugin', 'json:reports/api/cucumberAPI.json',
             '--glue', 'apiAutomation.stepDefinitions',
             '--tags','@api',
             'src/test/resources/apiAutomation/features'  // Path to API feature files
     ]
+    doFirst {
+        mkdir 'reports/api'
+    }
 }
 
 
